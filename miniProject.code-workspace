@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "authentication-Service"
+		},
+		{
+			"path": "associate-Service"
+		},
+		{
+			"path": "customer-Service"
+		},
+		{
+			"path": "projectManagement"
+		}
+	]
+}
