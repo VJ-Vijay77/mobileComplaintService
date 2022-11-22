@@ -30,7 +30,11 @@ func (d *Data) UdpateStatus(c *gin.Context) {
 
 	var complaints models.Complaint
 	// d.Db.Model(&models.Complaint{}).Updates(models.Complaint{Status: data.Status,Resolvedate:Resolvedate,Associateid:  uint(Id)})
-	  d.Db.Raw("UPDATE complaints SET status=?, resolvedate=?, associateid=? WHERE tokenno=?",data.Status,Resolvedate,Id,data.Tokenno).Scan(&complaints)
+	t := d.Db.Raw("UPDATE complaints SET status=?, resolvedate=?, associateid=? WHERE tokenno=?",data.Status,Resolvedate,Id,data.Tokenno).Scan(&complaints)
+	if t.Error != nil {
+		c.JSON(400,"database transaction error")
+		return
+	}
 	// d.Db.Where("tokenno=?").Find(&compl)
 	// c.JSON(200,compl)
 
