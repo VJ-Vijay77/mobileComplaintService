@@ -12,6 +12,7 @@ func Init() {
 	initializers.ConnectToDB()
 }
 func main() {
+	//initializing the database at startup
 	Init()
 	r := gin.Default()
 	routes.Routes(r)
